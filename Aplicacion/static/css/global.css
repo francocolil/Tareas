@@ -1,0 +1,14 @@
+/* Body */
+
+/* fuentes :root */
+:root {
+    --font-primary: 'Roboto Slab', serif;
+    --font-secondary: 'Roboto Condensed', sans-serif;
+  }
+  
+  /* Aplica la fuente globalmente al body */
+  body {
+    font-family: var(--font-primary);
+    /* font-weight: 400; O el peso deseado */
+  }
+  

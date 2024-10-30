@@ -31,7 +31,7 @@
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon custom-navtoggler"></span>
         </button>
         <div
           class="collapse navbar-collapse navbar-center-items"
@@ -46,10 +46,9 @@
             <a class="nav-link nav-full-item" href="#">Estadisticas</a>
           </div>
         </div>
-        {*usuario is not autenticated muestro :*}
+
         <a class="material-symbols-outlined customLoginIcon" href="{{url_for('auth.login')}}">login</a>
-        {* else*}
-        <a class="material-symbols-outlined customLoginIcon" href="{{url_for('auth.logout')}}">logout</a>
+
       </div>
     </nav>
     <!-- FIN NAVBAR -->

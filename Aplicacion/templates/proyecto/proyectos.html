@@ -3,8 +3,68 @@
 <h1>{% block title %} Mis Proyectos {% endblock %}</h1>
 
 {% for proyectos in proyecto %}
-<p>{{proyectos.title}}</p>
-<p>{{proyectos.desc}}</p>
-<p>{{proyectos.state}}</p>
+
+<div class="card" style="width: 18rem">
+  <img src="..." class="card-img-top" alt="..." />
+  <div class="card-body">
+    <h5 class="card-title">{{proyectos.title}}</h5>
+    <p class="card-text">{{proyectos.desc}}</p>
+    <p class="card-text">{{proyectos.state}}</p>
+
+    <a
+      href="{{ url_for('tarea.register_tarea', proyecto_id=proyectos.id) }}"
+      class="btn btn-primary"
+    >
+      Registrar Tarea
+    </a>
+    <a class="btn btn-success">Actualizar Proyecto</a>
+
+    <!-- Button trigger modal -->
+    <button
+      type="button"
+      class="btn btn-danger"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+    >
+      Eliminar Proyecto
+    </button>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              Seguro que quiere eliminar el proyecto
+              <span>{{proyectos.title}}?</span>
+            </h1>
+          </div>
+          <div class="modal-body">...</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-danger">
+              <a
+                href="{{url_for('proyecto.eliminar_proyecto', id = proyectos.id)}}"
+                >Eliminar Proyecto</a
+              >
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endfor %} {% endblock %}

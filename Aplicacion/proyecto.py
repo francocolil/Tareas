@@ -27,7 +27,7 @@ def register_proyecto():
         desc = request.form['desc']
         state = request.form['state']
         
-        proyecto = Proyecto(title, desc, state, current_user.id ,)
+        proyecto = Proyecto(title, desc, state, current_user.id)
         
         db.session.add(proyecto)
         db.session.commit()
@@ -71,4 +71,4 @@ def eliminar_proyecto(id):
     db.session.delete(proyecto)
     db.session.commit()
     
-    return redirect(url_for('proyecto.ver_proyecto'))
+    return redirect(url_for('proyecto.ver_proyectos'))

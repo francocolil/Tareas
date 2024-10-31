@@ -16,22 +16,22 @@ def ver_tarea():
 
 
 
-@bp.route('/register-tarea', methods=['GET', 'POST'])
+@bp.route('/register-tarea/<int:proyecto_id>', methods=['GET', 'POST'])
 @login_required
-def register_tarea():
+def register_tarea(proyecto_id):
     
     if request.method == 'POST':
         title = request.form["title"]
         desc = request.form["desc"]
         state = request.form["state"]
         
-        tarea = Tarea(title, desc, state)
+        tarea = Tarea(proyecto_id, title, desc, state)
         
         db.session.add(tarea)
         db.session.commit()
         return redirect('tarea.ver_tarea')
     
-    return render_template('tareas/register.html')
+    return render_template('tareas/register.html', proyecto_id=proyecto_id)
 
 
 

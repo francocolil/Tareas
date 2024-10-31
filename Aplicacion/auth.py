@@ -1,10 +1,18 @@
 from flask import Flask, render_template, redirect, request, g, session, Blueprint, url_for, flash
 
+from flask_login import login_user, logout_user
+
 from .models import User
 
-from Aplicacion import db, bcrypt
+from Aplicacion import db, bcrypt, login_manager
 
 bp = Blueprint("auth", __name__, url_prefix="/auth")
+
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 
 @bp.route('/register', methods=["GET", "POST"])
@@ -36,18 +44,20 @@ def login():
         username = request.form["username"]
         password = request.form["password"]
         
-        error = None
-        
         user = User.query.filter_by(username=username).first()
         
         if user == None or not bcrypt.check_password_hash(user.password, password):
-            error = "El Usuario o Contraseña son ERRONEAS"
+            flash("El Usuario o Contraseña son ERRONEAS")
         
-        if error is None:
-            session.clear()
-            session['user_id'] = user.id
+        else:
+            login_user(user)
             return redirect(url_for('index'))
-        
-        flash(error)
 
     return render_template('auth/login.html')
+
+
+
+@bp.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))

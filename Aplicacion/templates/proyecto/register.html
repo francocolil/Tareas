@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block content %}
+
+<form action="" method="POST">
+  <div class="container">
+    <h1>{% block title %} Registrar Proyecto {% endblock %}</h1>
+
+    <label for="title">Titulo del Proyecto: </label>
+    <input type="text" name="title" id="title" />
+
+    <label for="desc">Titulo del Proyecto: </label>
+    <input type="text" name="desc" id="desc" />
+
+    <label for="state">Estado del Proyecto: </label>
+    <input type="text" name="state" id="state" />
+
+    <input type="submit" value="Registrar" />
+
+    <a href="{{url_for('proyecto.ver_proyectos')}}"
+      ><input type="submit" value="Cancelar"
+    /></a>
+  </div>
+</form>
+
+{% endblock %}

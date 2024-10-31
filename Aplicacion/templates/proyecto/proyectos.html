@@ -2,4 +2,9 @@
 
 <h1>{% block title %} Mis Proyectos {% endblock %}</h1>
 
-{% endblock %}
+{% for proyectos in proyecto %}
+<p>{{proyectos.title}}</p>
+<p>{{proyectos.desc}}</p>
+<p>{{proyectos.state}}</p>
+
+{% endfor %} {% endblock %}

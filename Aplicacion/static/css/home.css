@@ -50,6 +50,11 @@
     cursor: pointer;
 }
 
+.custom-navtoggler{
+    background-color: white;
+    filter: drop-shadow(0px 0px 4px #ffffff91);
+}
+
 
 /* INDEX/HOME */
 

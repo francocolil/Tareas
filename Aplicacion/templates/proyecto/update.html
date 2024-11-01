@@ -5,13 +5,13 @@
     <h1>{% block title %} Actualizar Proyecto {% endblock %}</h1>
 
     <label for="title">Titulo del Proyecto: </label>
-    <input type="text" name="title" id="title" />
+    <input type="text" name="title" id="title" value="{{proyecto_id.title}}" />
 
     <label for="desc">Titulo del Proyecto: </label>
-    <input type="text" name="desc" id="desc" />
+    <input type="text" name="desc" id="desc" value="{{proyecto_id.desc}}" />
 
     <label for="state">Estado del Proyecto: </label>
-    <input type="text" name="state" id="state" />
+    <input type="text" name="state" id="state" value="{{proyecto_id.state}}" />
 
     <input type="submit" value="Registrar" />
 

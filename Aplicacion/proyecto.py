@@ -50,9 +50,9 @@ def actualizar_proyecto(id):
     proyecto_id = tener_id(id)
     
     if request.method == "POST":
-        title = request.form.get('title')
-        desc = request.form.get('desc')
-        state = request.form.get('state')
+        proyecto_id.title = request.form.get('title')
+        proyecto_id.desc = request.form.get('desc')
+        proyecto_id.state = request.form.get('state')
         
         db.session.commit()
         return redirect(url_for('proyecto.ver_proyectos'))

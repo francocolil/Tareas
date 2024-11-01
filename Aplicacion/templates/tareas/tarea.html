@@ -2,4 +2,28 @@
 
 <h1>{% block title %} Tareas {% endblock %}</h1>
 
-{% endblock %}
+{% for tarea in tareas %}
+
+<div class="card" style="width: 18rem">
+  <div class="card-body">
+    <h5 class="card-title">{{tarea.title}}</h5>
+    <p class="card-text">{{tarea.desc}}</p>
+    <p class="card-text">{{tarea.state}}</p>
+
+    <a
+      href="{{url_for('tarea.actualizar_tarea', id = tarea.id)}}"
+      class="btn btn-primary"
+    >
+      Actualizar Tarea
+    </a>
+
+    <a
+      class="btn btn-danger"
+      href="{{url_for('tarea.eliminar_tarea', id=tarea.id)}}"
+    >
+      Eliminar Tarea
+    </a>
+  </div>
+</div>
+
+{% endfor %} {% endblock %}

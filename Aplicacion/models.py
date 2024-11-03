@@ -22,7 +22,7 @@ class Proyecto(db.Model):
     desc = db.Column(db.Text)
     state = db.Column(db.String(50), nullable=False)
     user = db.relationship('User', back_populates='proyecto')
-    tarea = db.relationship('Tarea', back_populates='proyecto', uselist=True)
+    tarea = db.relationship('Tarea', back_populates='proyecto', cascade="all, delete-orphan", uselist=True)
 
     def __init__(self, title, desc, state, created_by):
         self.title = title
